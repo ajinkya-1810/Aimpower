@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Home — AIMPOWER FOUNDATION</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g1:#1A4D2E;--g2:#2D7A4F;--g3:#D5EDE0;--g4:#EEF7F2;
+  --am:#B86E00;--aml:#FEF3DC;--bl:#1B3A6B;--bll:#DDE6F5;
+  --tx:#1A1A1A;--mu:#5C6370;--bd:#D8E5DB;--wt:#FFFFFF;--bg:#F7FAF8;--lg:#F2F6F3;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.7}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+a{color:var(--g2);text-decoration:none}
+
+/* ── NAV ── */
+.nav{background:var(--g1);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.nav-logo{padding:.5rem 0;display:flex;align-items:center;gap:.75rem}
+.nav-logo-box{background:#fff;border-radius:8px;padding:.4rem .6rem;display:flex;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.nav-logo-box img{height:34px;display:block;border-radius:3px}
+.nav-logo span{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:.02em}
+
+/* ── IMAGE SLIDER ── */
+.slider{position:relative;width:100%;height:420px;overflow:hidden;background:var(--g1)}
+.slider-track{display:flex;height:100%;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.slide{min-width:100%;height:100%;position:relative}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,77,46,.75) 0%,rgba(26,77,46,.15) 45%,rgba(26,77,46,0) 70%)}
+.slide-cap{position:absolute;left:0;right:0;bottom:0;padding:1.5rem 2rem;color:#fff;z-index:2}
+.slide-cap .tag{display:inline-block;background:var(--am);color:#fff;border:none;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:100px;margin-bottom:.5rem}
+.slide-cap h3{font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.slide-cap p{font-size:.88rem;color:rgba(255,255,255,.85);font-style:italic}
+.slider-dots{position:absolute;right:1.5rem;bottom:1.5rem;display:flex;gap:.5rem;z-index:3}
+.slider-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}
+.slider-dot.active{background:#fff;transform:scale(1.2)}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:1.1rem;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:background .2s}
+.slider-arrow:hover{background:rgba(255,255,255,.32)}
+.slider-arrow.prev{left:1.25rem}
+.slider-arrow.next{right:1.25rem}
+@media(max-width:768px){
+  .slider{height:280px}
+  .slide-cap h3{font-size:1.15rem}
+  .slider-arrow{width:34px;height:34px;font-size:.95rem}
+}
+.nav-links{display:flex;gap:.25rem}
+.nav-links a{color:rgba(255,255,255,.8);font-size:.78rem;font-weight:500;text-transform:uppercase;letter-spacing:.07em;padding:.5rem .7rem;border-radius:4px;transition:all .2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.12)}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(160deg,var(--g1) 0%,#1f5c38 60%,#2d7a4f 100%);color:#fff;padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-logo{position:relative;margin:0 auto 2rem;display:inline-block;background:rgba(255,255,255,.12);border-radius:16px;padding:1rem 2rem;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}
+.hero-logo img{height:70px;border-radius:6px}
+.hero h1{font-size:3.2rem;font-weight:700;line-height:1.15;margin-bottom:.75rem;position:relative}
+.hero h1 span{color:#a8e6c3}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.85);max-width:640px;margin:.75rem auto 1.5rem;position:relative}
+.hero-tagline{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:#a8e6c3;margin-bottom:2rem;position:relative}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:2.5rem;position:relative}
+.pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:.35rem .9rem;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(--wt);border-bottom:2px solid var(--bd);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:1.5rem 1rem;text-align:center;border-right:1px solid var(--bd)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--g1);line-height:1}
+.stat-l{font-size:.78rem;color:var(--mu);margin-top:.3rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1060px;margin:0 auto;padding:0 1.5rem}
+.section{padding:3.5rem 0}
+.section-inner{max-width:1060px;margin:0 auto;padding:0 1.5rem}
+.section+.section{border-top:1px solid var(--bd)}
+.section-alt{background:var(--wt)}
+
+.sec-badge{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g2);margin-bottom:.4rem}
+.sec-title{font-size:2.1rem;color:var(--g1);margin-bottom:.4rem}
+.sec-div{height:3px;width:60px;background:linear-gradient(90deg,var(--g2),transparent);border-radius:2px;margin-bottom:1.8rem}
+.sec-intro{font-size:1.0rem;color:var(--mu);max-width:720px;margin-bottom:2rem;line-height:1.75}
+
+/* ── TWO-COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+
+/* ── CARDS ── */
+.card{background:var(--wt);border:1px solid var(--bd);border-radius:12px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.card-green{background:var(--g4);border-color:var(--g3)}
+.card-amber{background:var(--aml);border-color:#e8c97a}
+.card-blue{background:var(--bll);border-color:#b8cce8}
+
+.card-icon{font-size:2rem;margin-bottom:.75rem}
+.card-title{font-size:1rem;font-weight:700;color:var(--g1);margin-bottom:.5rem}
+.card-desc{font-size:.87rem;color:var(--mu);line-height:1.65}
+
+/* ── HIGHLIGHT BOX ── */
+.hbox{background:var(--g3);border:1px solid var(--g2);border-left:4px solid var(--g2);border-radius:8px;padding:1.25rem 1.5rem;margin:1rem 0}
+.hbox p{font-size:.95rem;font-style:italic;color:var(--g1);line-height:1.7}
+.hbox.amber{background:var(--aml);border-color:var(--am);border-left-color:var(--am)}
+.hbox.amber p{color:var(--am)}
+.hbox.blue{background:var(--bll);border-color:var(--bl);border-left-color:var(--bl)}
+.hbox.blue p{color:var(--bl)}
+
+/* ── SDG CHIPS ── */
+.sdg-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
+.sdg-chip{background:var(--bl);color:#fff;font-size:.74rem;font-weight:700;padding:.3rem .75rem;border-radius:6px;letter-spacing:.04em}
+.sdg-chip.green{background:var(--g1)}
+.sdg-chip.amber{background:var(--am)}
+
+/* ── TABLES ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.87rem;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.data-table th{background:var(--g1);color:#fff;padding:.7rem 1rem;text-align:left;font-weight:600;font-size:.82rem;letter-spacing:.03em}
+.data-table td{padding:.65rem 1rem;border-bottom:1px solid var(--bd);vertical-align:top;color:var(--tx)}
+.data-table tr:nth-child(even) td{background:var(--g4)}
+.data-table tr:last-child td{border-bottom:none}
+
+/* ── PHOTO GRID ── */
+.photo-grid{display:grid;gap:1rem}
+.photo-grid.g2{grid-template-columns:1fr 1fr}
+.photo-grid.g3{grid-template-columns:1fr 1fr 1fr}
+.photo-item{border-radius:10px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.photo-item img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-cap{background:var(--g1);color:rgba(255,255,255,.85);font-size:.75rem;padding:.45rem .75rem;font-style:italic;text-align:center}
+
+/* ── TEAM CARDS ── */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.team-card{background:var(--wt);border:1px solid var(--bd);border-radius:12px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:box-shadow .2s}
+.team-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.team-photo{width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--g3)}
+.team-info .name{font-size:.97rem;font-weight:700;color:var(--g1);margin-bottom:.15rem}
+.team-info .role{font-size:.8rem;font-weight:600;color:var(--g2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
+.team-info .inst{font-size:.78rem;color:var(--am);font-weight:500;margin-bottom:.5rem}
+.team-info .bio{font-size:.82rem;color:var(--mu);line-height:1.6}
+
+/* ── PARTNER TAGS ── */
+.tag-group{margin-bottom:1.25rem}
+.tag-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g2);margin-bottom:.6rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{background:var(--g4);border:1px solid var(--bd);color:var(--g1);font-size:.8rem;font-weight:500;padding:.3rem .75rem;border-radius:6px}
+.tag.amber{background:var(--aml);border-color:#e8c97a;color:var(--am)}
+
+/* ── PHASE TABLE ── */
+.phase-table th{background:var(--g1)}
+.phase-num{font-weight:700;color:var(--g2);font-size:.75rem}
+
+/* ── MEDIA ── */
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.media-item img{width:100%;border-radius:8px;box-shadow:0 3px 12px rgba(0,0,0,.1)}
+.media-cap{font-size:.77rem;color:var(--mu);font-style:italic;margin-top:.4rem;text-align:center}
+
+/* ── ENGAGE / CTA ── */
+.cta-strip{background:var(--g1);color:#fff;padding:2rem;border-radius:12px;margin:1.5rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.cta-strip h3{font-size:1.2rem;margin-bottom:.3rem}
+.cta-strip p{font-size:.9rem;color:rgba(255,255,255,.8)}
+.btn{display:inline-block;background:#fff;color:var(--g1);padding:.6rem 1.4rem;border-radius:8px;font-weight:700;font-size:.88rem;white-space:nowrap;transition:background .2s}
+.btn:hover{background:var(--g3)}
+.btn.outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6)}
+.btn.outline:hover{background:rgba(255,255,255,.1)}
+
+/* ── SOCIAL LINKS ── */
+.social-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
+.social-btn{display:flex;align-items:center;gap:.4rem;background:var(--wt);border:1px solid var(--bd);border-radius:8px;padding:.5rem 1rem;font-size:.85rem;font-weight:500;color:var(--g1);transition:background .15s}
+.social-btn:hover{background:var(--g3)}
+
+/* ── FOOTER ── */
+.footer{background:var(--g1);color:rgba(255,255,255,.7);padding:2.5rem 2rem;text-align:center}
+.footer .f-logo{margin:0 auto 1rem;display:inline-block}
+.footer .f-logo img{height:50px;border-radius:6px}
+.footer strong{color:#fff}
+.footer a{color:#a8e6c3}
+.footer p{margin:.35rem 0;font-size:.85rem}
+
+/* ── BULLETS ── */
+ul.blist{list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}
+ul.blist li{display:flex;gap:.6rem;font-size:.9rem;color:var(--tx);align-items:flex-start;line-height:1.6}
+ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0;margin-top:-.1rem}
+
+/* ── DIVIDER ── */
+.hdiv{height:3px;background:linear-gradient(90deg,var(--g2),transparent);border-radius:2px;margin:.4rem 0 1.8rem}
+
+/* ── MISC ── */
+.subhead{font-family:'Playfair Display',serif;color:var(--g1);font-size:1.3rem;margin:2rem 0 1rem}
+.subhead:first-child{margin-top:0}
+.lede{font-size:.92rem;color:var(--mu);margin-bottom:1.25rem;line-height:1.75}
+
+@media(max-width:768px){
+  .two-col,.three-col,.team-grid,.stats-bar{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:1px solid var(--bd)}
+  .hero h1{font-size:2rem}
+  .nav-links{display:none}
+  .media-grid,.photo-grid.g2,.photo-grid.g3{grid-template-columns:1fr}
+}
+
+.nav-links a.active{color:#fff;background:rgba(255,255,255,.18)}
+.page-banner{background:linear-gradient(160deg,var(--g1) 0%,#1f5c38 60%,#2d7a4f 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.page-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.page-banner h1{font-size:2.2rem;font-weight:700;position:relative}
+.page-banner p{font-size:.95rem;color:rgba(255,255,255,.8);max-width:600px;margin:.6rem auto 0;position:relative}
+.breadcrumb{position:relative;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#a8e6c3;margin-bottom:.6rem}
+.breadcrumb a{color:#a8e6c3;opacity:.8}
+.breadcrumb a:hover{opacity:1}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" class="nav-logo-box">
+      <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html"  class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="work.html">Our Work</a>
+    <a href="approach.html">Approach</a>
+    <a href="team.html">Team</a>
+    <a href="partners.html">Partners</a>
+    <a href="publications.html">Publications &amp; Media</a>
+    <a href="engage.html">Engage</a>
+  </div>
+</nav>
+
+<!-- IMAGE SLIDER -->
+<div class="slider" id="slider">
+  <div class="slider-track" id="sliderTrack">
+    <div class="slide">
+      <img src="images/new_workshop_panel.jpg" alt="Gender Patriarchy & Feminism Workshop — Inauguration Panel, J.M. Patel College, Bhandara, Sep 2025">
+      <div class="slide-cap">
+        <span class="tag">Pillar 1 &bull; Gender Justice</span>
+        <h3>Gender, Patriarchy &amp; Feminism Workshop</h3>
+        <p>Inauguration at J.M. Patel Arts, Commerce &amp; Science College, Bhandara &mdash; Sep 12&ndash;13, 2025</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/new_workshop_hall1.jpg" alt="Packed workshop hall — participants at Bhandara, Sep 2025">
+      <div class="slide-cap">
+        <span class="tag">Pillar 1 &bull; Leadership</span>
+        <h3>Building Feminist Leadership</h3>
+        <p>Full-house session: students, faculty &amp; researchers at J.M. Patel College, Bhandara &mdash; Sep 2025</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/new_workshop_audience.jpg" alt="Workshop audience — youth and women participants">
+      <div class="slide-cap">
+        <span class="tag">Pillar 1 &bull; Gender Justice</span>
+        <h3>172 Participants &mdash; Two-Day Offline Workshop</h3>
+        <p>Engaged audience of students, research scholars &amp; NGO members, Bhandara &mdash; Sep 2025</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/new_workshop_facilitator.jpg" alt="Facilitator in action — interactive session">
+      <div class="slide-cap">
+        <span class="tag">Pillar 1 &bull; Empowerment</span>
+        <h3>Interactive Facilitation in Action</h3>
+        <p>Experiential learning methodology — hands-on gender sensitization at J.M. Patel College, Sep 2025</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/new_workshop_group.jpg" alt="Group photo — organising team and resource persons">
+      <div class="slide-cap">
+        <span class="tag">Partnership &bull; Collaboration</span>
+        <h3>Team &amp; Resource Persons — Workshop Closing</h3>
+        <p>AIMPOWER FOUNDATION team with faculty and partners, J.M. Patel College, Sep 13, 2025</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/new_school_programme.jpg" alt="School outreach programme — Ghotmundhari village">
+      <div class="slide-cap">
+        <span class="tag">Pillar 3 &bull; Community</span>
+        <h3>School Assembly &amp; Child Rights Programme</h3>
+        <p>Upper Primary Semi-English School, Ghotmundhari &mdash; Children, rights &amp; education awareness</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/new_relief_distribution1.jpg" alt="COVID-19 ration relief distribution with AIMPOWER banner">
+      <div class="slide-cap">
+        <span class="tag">Crisis Response &bull; Pillar 3</span>
+        <h3>COVID-19 Ration Kit Distribution</h3>
+        <p>AIMPOWER FOUNDATION delivering ration kits to 45 marginalised families &mdash; Dholmara &amp; Asti, Jun 2021</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="images/new_relief_distribution2.jpg" alt="Community members receiving relief materials">
+      <div class="slide-cap">
+        <span class="tag">Crisis Response &bull; Solidarity</span>
+        <h3>Community Relief in Action</h3>
+        <p>Standing with the most vulnerable &mdash; relief materials distributed, Bhandara district, Jun 2021</p>
+      </div>
+    </div>
+  </div>
+  <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">&#10094;</button>
+  <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">&#10095;</button>
+  <div class="slider-dots" id="sliderDots"></div>
+</div>
+
+<div class="hero">
+<div class="hero">
+  <div class="hero-logo">
+    <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
+  </div>
+  <h1>Empowering Communities.<br><span>Advancing Justice.</span><br>Building Futures.</h1>
+  <p class="hero-tagline">&ldquo;An Inclusive, Empowered Community &mdash; Rooted in Equality, Liberty, and Justice for All.&rdquo;</p>
+  <p class="hero-sub">A registered civil society organisation headquartered in the Vidarbha region of Maharashtra, working at the intersection of Gender Justice, Education, Livelihoods, and Community Rights &mdash; locally rooted, nationally connected. Contributing to the SDGs, the National Mission on Gender Justice, and India@2047.</p>
+  <div class="hero-pills">
+    <span class="pill">Children &bull; Youth &bull; Women &bull; Communities</span>
+    <span class="pill">SDGs Aligned</span>
+    <span class="pill">India@2047</span>
+    <span class="pill">TISS &bull; APU Alumni-Led</span>
+    <span class="pill">Est. 20 Oct 2020 &bull; Bhandara, Maharashtra</span>
+  </div>
+</div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-n">3,500+</div><div class="stat-l">Lives Reached</div></div>
+  <div class="stat"><div class="stat-n">12+</div><div class="stat-l">Years in Development</div></div>
+  <div class="stat"><div class="stat-n">10+</div><div class="stat-l">State &amp; National Partners</div></div>
+  <div class="stat"><div class="stat-n">6</div><div class="stat-l">SDGs Addressed</div></div>
+</div>
+</div>
+
+<section class="section">
+<div class="section-inner">
+<div class="sec-badge">Welcome</div>
+  <h2 class="sec-title">A Snapshot of Our Work</h2>
+  <div class="sec-div"></div>
+  <p class="sec-intro">AIMPOWER FOUNDATION is a registered civil society organisation from the Vidarbha region of Maharashtra, working at the intersection of Gender Justice, Education, Livelihoods, and Community Rights. Explore the menu above to learn about who we are, what we do, how we work, who leads us, and how you can get involved.</p>
+  <div class="three-col">
+    <div class="card card-green">
+      <div class="card-title">Who We Are</div>
+      <div class="card-desc">Our vision, mission, values and what makes our approach distinctive.</div>
+      <p style="margin-top:.75rem"><a href="about.html">Read more &rarr;</a></p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-title">Our Work &amp; Impact</div>
+      <div class="card-desc">Four pillars of programmes reaching 3,500+ children, youth and women.</div>
+      <p style="margin-top:.75rem"><a href="work.html">Read more &rarr;</a></p>
+    </div>
+    <div class="card card-blue">
+      <div class="card-title">Engage With Us</div>
+      <div class="card-desc">Partner, donate, volunteer or join our team.</div>
+      <p style="margin-top:.75rem"><a href="engage.html">Read more &rarr;</a></p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<footer class="footer">
+  <div class="f-logo">
+    <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
+  </div>
+  <p><strong>AIMPOWER FOUNDATION</strong> &bull; Bhandara, Maharashtra &bull; Established 2020</p>
+  <p>Reg. No. Bhandara/0000044/2020 &bull; Societies Registration Act, 1860</p>
+  <p style="margin-top:.5rem">
+    <a href="mailto:aimpowerf@gmail.com">aimpowerf@gmail.com</a> &nbsp;|&nbsp;
+    <a href="https://instagram.com/aimpower_foundation">Instagram</a> &nbsp;|&nbsp;
+    <a href="https://linkedin.com/company/aimpower-foundation">LinkedIn</a>
+  </p>
+  <p style="margin-top:1rem;font-size:.8rem;opacity:.55">Empowering Children &bull; Youth &bull; Women &bull; Communities &nbsp;&mdash;&nbsp; &ldquo;Equality. Liberty. Justice. For All.&rdquo;</p>
+</footer>
+</footer>
+
+<script>
+(function(){
+  const track = document.getElementById('sliderTrack');
+  const dotsWrap = document.getElementById('sliderDots');
+  const slides = track.children;
+  const count = slides.length;
+  let idx = 0;
+  let timer;
+
+  for(let i=0;i<count;i++){
+    const b = document.createElement('button');
+    b.className = 'slider-dot' + (i===0 ? ' active' : '');
+    b.setAttribute('aria-label','Go to slide '+(i+1));
+    b.onclick = () => goTo(i);
+    dotsWrap.appendChild(b);
+  }
+  const dots = dotsWrap.children;
+
+  function render(){
+    track.style.transform = 'translateX(' + (-idx*100) + '%)';
+    for(let i=0;i<dots.length;i++){ dots[i].classList.toggle('active', i===idx); }
+  }
+  function goTo(i){ idx = (i+count)%count; render(); resetTimer(); }
+  window.moveSlide = function(dir){ goTo(idx+dir); };
+  function resetTimer(){ clearInterval(timer); timer = setInterval(()=>goTo(idx+1), 5000); }
+
+  render();
+  resetTimer();
+})();
+</script>
+
+</body>
+</html>

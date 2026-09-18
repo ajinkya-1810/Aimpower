@@ -22,6 +22,7 @@ a{color:var(--g2);text-decoration:none}
 .nav-logo-box{background:#fff;border-radius:8px;padding:.4rem .6rem;display:flex;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .nav-logo-box img{height:34px;display:block;border-radius:3px}
 .nav-logo span{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:.02em}
+.nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;padding:.4rem .2rem;line-height:1}
 
 /* ── IMAGE SLIDER ── */
 .slider{position:relative;width:100%;height:420px;overflow:hidden;background:var(--g1)}
@@ -188,7 +189,11 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
   .two-col,.three-col,.team-grid,.stats-bar{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--bd)}
   .hero h1{font-size:2rem}
-  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--g1);box-shadow:0 10px 20px rgba(0,0,0,.3)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.9rem 1.5rem;width:100%}
   .media-grid,.photo-grid.g2,.photo-grid.g3{grid-template-columns:1fr}
 }
 
@@ -212,7 +217,8 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
       <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
     </a>
   </div>
-  <div class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="about.html"  class="active">About</a>
     <a href="work.html">Our Work</a>
@@ -243,9 +249,8 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
       </div>
 
       <h3 style="color:var(--g1);font-size:1.05rem;margin:1.25rem 0 .5rem">Our Mission</h3>
-	  <div class="hbox" style="margin:0 0 1rem">
-		<p style="margin-bottom:1rem">To advance equality and justice through research-driven, gender-responsive, and community-centred programmes that empower Children, Youth, Women, and vulnerable communities &mdash; contributing to national development priorities and the SDGs.</p>
-	  </div>
+      <p style="margin-bottom:1rem">To advance equality and justice through research-driven, gender-responsive, and community-centred programmes that empower Children, Youth, Women, and vulnerable communities &mdash; contributing to national development priorities and the SDGs.</p>
+
       <div style="border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12)">
         <img src="images/img_02_Workshop_2025.jpg" alt="Gender Sensitization Workshop" style="width:100%;display:block">
         <div class="photo-cap">Gender Sensitization Workshop, J.M. Patel College, Bhandara &mdash; September 2025</div>
@@ -328,5 +333,26 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
 </footer>
 </footer>
 
+
+<script>
+(function(){
+  var btn = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if(!btn||!links) return;
+  btn.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.innerHTML = open ? '&times;' : '&#9776;';
+  });
+  var navLinkEls = links.querySelectorAll('a');
+  for(var i=0;i<navLinkEls.length;i++){
+    navLinkEls[i].addEventListener('click', function(){
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.innerHTML = '&#9776;';
+    });
+  }
+})();
+</script>
 </body>
 </html>

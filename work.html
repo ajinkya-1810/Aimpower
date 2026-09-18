@@ -22,6 +22,7 @@ a{color:var(--g2);text-decoration:none}
 .nav-logo-box{background:#fff;border-radius:8px;padding:.4rem .6rem;display:flex;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .nav-logo-box img{height:34px;display:block;border-radius:3px}
 .nav-logo span{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:.02em}
+.nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;padding:.4rem .2rem;line-height:1}
 
 /* ── IMAGE SLIDER ── */
 .slider{position:relative;width:100%;height:420px;overflow:hidden;background:var(--g1)}
@@ -188,7 +189,11 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
   .two-col,.three-col,.team-grid,.stats-bar{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--bd)}
   .hero h1{font-size:2rem}
-  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--g1);box-shadow:0 10px 20px rgba(0,0,0,.3)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.9rem 1.5rem;width:100%}
   .media-grid,.photo-grid.g2,.photo-grid.g3{grid-template-columns:1fr}
 }
 
@@ -212,7 +217,8 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
       <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
     </a>
   </div>
-  <div class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="work.html"  class="active">Our Work</a>
@@ -298,58 +304,47 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
   </table>
 
   <!-- Pillars 3 & 4 -->
-  <!-- Pillar 3 -->
-  <div style="margin-bottom:2rem">
-    <div style="background:var(--g4);border:1px solid var(--g3);border-left:4px solid var(--g2);border-radius:0 8px 8px 0;padding:.85rem 1.25rem;margin-bottom:.9rem;display:flex;align-items:baseline;gap:1.5rem;flex-wrap:wrap">
-      <span style="font-size:.97rem;font-weight:700;color:var(--g1);white-space:nowrap">Pillar 3 &mdash; School &amp; Community-Level Interventions</span>
-      <span style="font-size:.78rem;color:var(--am);font-weight:600;white-space:nowrap">SDGs 1, 4, 5 &nbsp;|&nbsp; Beti Bachao Beti Padhao &amp; WASH Mission</span>
-    </div>
-    <div class="two-col" style="gap:2rem;align-items:start">
-      <div>
-        <p style="margin-bottom:.75rem">AIMPOWER FOUNDATION grounds its community work in the villages of Bhandara and Nagpur &mdash; addressing literacy, child rights, sanitation, and crisis resilience.</p>
-        <ul class="blist">
-          <li>Annual Drawing, Essay, Speech &amp; Rangoli Competitions on Savitribai Phule Jayanti &mdash; 90+ children engaged, Ghotmundhari village</li>
-          <li>School Library Drive: 15 books donated to Ghotmundhari Primary School (Jan 2022)</li>
-          <li>COVID-19 Relief: Ration kits to 45 marginalised families in Dholmara &amp; Asti villages (June 2021)</li>
-          <li>WASH &amp; Community Health awareness aligned with Swachh Bharat Mission</li>
-        </ul>
+  <div class="two-col">
+    <div>
+      <div style="background:var(--g4);border:1px solid var(--g3);border-left:4px solid var(--g2);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-bottom:.75rem">
+        <strong style="color:var(--g1);font-size:1rem">Pillar 3 &mdash; School &amp; Community-Level Interventions</strong><br>
+        <span style="font-size:.78rem;color:var(--am);font-weight:600">SDGs 1, 4, 5  |  Beti Bachao Beti Padhao &amp; WASH Mission</span>
       </div>
-      <div>
-        <div class="photo-grid g2" style="margin-bottom:.5rem">
-          <div class="photo-item" style="height:160px"><img src="images/new_school_programme.jpg" alt="School programme" style="height:160px;width:100%;object-fit:cover"></div>
-          <div class="photo-item" style="height:160px"><img src="images/img_08_School_assembly.jpg" alt="School assembly" style="height:160px;width:100%;object-fit:cover"></div>
-        </div>
-        <p style="font-size:.76rem;color:var(--mu);font-style:italic;text-align:center;margin-bottom:.75rem">School engagement &mdash; Ghotmundhari village</p>
-        <div class="photo-item">
-          <img src="images/new_relief_distribution1.jpg" alt="COVID-19 ration kit distribution" style="width:100%;display:block;height:180px;object-fit:cover">
-          <div class="photo-cap">COVID-19 Ration Kit Distribution &mdash; Dholmara &amp; Asti, June 2021</div>
-        </div>
+      <p style="margin-bottom:.75rem">AIMPOWER FOUNDATION grounds its community work in the villages of Bhandara and Nagpur &mdash; addressing literacy, child rights, sanitation, and crisis resilience.</p>
+      <ul class="blist" style="margin-bottom:1rem">
+        <li>Annual Drawing, Essay, Speech &amp; Rangoli Competitions on Savitribai Phule Jayanti &mdash; 90+ children engaged, Ghotmundhari village</li>
+        <li>School Library Drive: 15 books donated to Ghotmundhari Primary School (Jan 2022)</li>
+        <li>COVID-19 Relief: Ration kits to 45 marginalised families in Dholmara &amp; Asti villages (June 2021)</li>
+        <li>WASH &amp; Community Health awareness aligned with Swachh Bharat Mission</li>
+      </ul>
+      <div class="photo-grid g2" style="margin-bottom:.5rem">
+        <div class="photo-item" style="height:155px"><img src="images/img_07_School_programme.jpg" alt="School programme" style="height:155px"></div>
+        <div class="photo-item" style="height:155px"><img src="images/img_08_School_assembly.jpg" alt="School assembly" style="height:155px"></div>
+      </div>
+      <p style="font-size:.76rem;color:var(--mu);font-style:italic;text-align:center">School engagement &mdash; Ghotmundhari village</p>
+      <div style="height:1rem"></div>
+      <div class="photo-item" style="max-width:100%">
+        <img src="images/img_09_COVID_Relief.jpg" alt="COVID-19 ration kit distribution" style="width:100%;display:block">
+        <div class="photo-cap">COVID-19 Ration Kit Distribution &mdash; Dholmara &amp; Asti, June 2021</div>
       </div>
     </div>
-  </div>
 
-  <!-- Pillar 4 -->
-  <div style="margin-bottom:1rem">
-    <div style="background:var(--g4);border:1px solid var(--g3);border-left:4px solid var(--g2);border-radius:0 8px 8px 0;padding:.85rem 1.25rem;margin-bottom:.9rem;display:flex;align-items:baseline;gap:1.5rem;flex-wrap:wrap">
-      <span style="font-size:.97rem;font-weight:700;color:var(--g1);white-space:nowrap">Pillar 4 &mdash; Rural Livelihoods &amp; Forest Rights</span>
-      <span style="font-size:.78rem;color:var(--am);font-weight:600;white-space:nowrap">SDGs 1, 5, 8, 15 &nbsp;|&nbsp; FRA 2006, PMKVY &amp; MGNREGS</span>
-    </div>
-    <div class="two-col" style="gap:2rem;align-items:start">
-      <div>
-        <ul class="blist">
-          <li>Formation &amp; capacity building of SHGs and Women Enterprise Groups</li>
-          <li>Community Forest Rights (CFR): Supporting Gram Sabhas under Forest Rights Act, 2006</li>
-          <li>Value chain development, market linkage &amp; kitchen garden interventions</li>
-          <li>Farmer Producer Organisation (FPO) support for women entrepreneurs</li>
-          <li>Skill training aligned with Skill India for rural youth employability</li>
-        </ul>
+    <div>
+      <div style="background:var(--g4);border:1px solid var(--g3);border-left:4px solid var(--g2);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-bottom:.75rem">
+        <strong style="color:var(--g1);font-size:1rem">Pillar 4 &mdash; Rural Livelihoods &amp; Forest Rights</strong><br>
+        <span style="font-size:.78rem;color:var(--am);font-weight:600">SDGs 1, 5, 8, 15  |  FRA 2006, PMKVY &amp; MGNREGS</span>
       </div>
-      <div>
-        <div style="border-radius:10px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.1);display:flex">
-          
-          <div style="padding:1.25rem;background:var(--g1);color:#fff;flex:1;display:flex;flex-direction:column;justify-content:center">
-            <p style="font-size:.88rem;font-style:italic;color:rgba(255,255,255,.9)">&ldquo;Our community facilitators work alongside Gram Sabhas to translate the Forest Rights Act into lived economic security for women-led enterprise groups.&rdquo;</p>
-          </div>
+      <ul class="blist" style="margin-bottom:1rem">
+        <li>Formation &amp; capacity building of SHGs and Women Enterprise Groups</li>
+        <li>Community Forest Rights (CFR): Supporting Gram Sabhas under Forest Rights Act, 2006</li>
+        <li>Value chain development, market linkage &amp; kitchen garden interventions</li>
+        <li>Farmer Producer Organisation (FPO) support for women entrepreneurs</li>
+        <li>Skill training aligned with Skill India for rural youth employability</li>
+      </ul>
+      <div style="border-radius:10px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.1);display:flex;gap:0">
+        <img src="images/img_10_Community_facilitator.jpg" alt="Leadership in action" style="width:45%;object-fit:cover">
+        <div style="padding:1.25rem;background:var(--g1);color:#fff;flex:1;display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:.88rem;font-style:italic;color:rgba(255,255,255,.9)">&ldquo;Leadership in action &mdash; our community facilitators work alongside Gram Sabhas to translate the Forest Rights Act into lived economic security for women-led enterprise groups.&rdquo;</p>
         </div>
       </div>
     </div>
@@ -358,6 +353,7 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
 </section>
 
 <!-- FOOTER -->
+<footer class="footer">
 <footer class="footer">
   <div class="f-logo">
     <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
@@ -371,6 +367,28 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
   </p>
   <p style="margin-top:1rem;font-size:.8rem;opacity:.55">Empowering Children &bull; Youth &bull; Women &bull; Communities &nbsp;&mdash;&nbsp; &ldquo;Equality. Liberty. Justice. For All.&rdquo;</p>
 </footer>
+</footer>
 
+
+<script>
+(function(){
+  var btn = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if(!btn||!links) return;
+  btn.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.innerHTML = open ? '&times;' : '&#9776;';
+  });
+  var navLinkEls = links.querySelectorAll('a');
+  for(var i=0;i<navLinkEls.length;i++){
+    navLinkEls[i].addEventListener('click', function(){
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.innerHTML = '&#9776;';
+    });
+  }
+})();
+</script>
 </body>
 </html>

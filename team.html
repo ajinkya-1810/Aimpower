@@ -22,6 +22,7 @@ a{color:var(--g2);text-decoration:none}
 .nav-logo-box{background:#fff;border-radius:8px;padding:.4rem .6rem;display:flex;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .nav-logo-box img{height:34px;display:block;border-radius:3px}
 .nav-logo span{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:.02em}
+.nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;padding:.4rem .2rem;line-height:1}
 
 /* ── IMAGE SLIDER ── */
 .slider{position:relative;width:100%;height:420px;overflow:hidden;background:var(--g1)}
@@ -188,7 +189,11 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
   .two-col,.three-col,.team-grid,.stats-bar{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--bd)}
   .hero h1{font-size:2rem}
-  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--g1);box-shadow:0 10px 20px rgba(0,0,0,.3)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.9rem 1.5rem;width:100%}
   .media-grid,.photo-grid.g2,.photo-grid.g3{grid-template-columns:1fr}
 }
 
@@ -212,7 +217,8 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
       <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
     </a>
   </div>
-  <div class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="work.html">Our Work</a>
@@ -248,7 +254,7 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
     <div class="team-card">
       <img class="team-photo" src="images/img_12_Dr_Padma_Uike.jpg" alt="Dr. Padma Uttam Uike">
       <div class="team-info">
-        <div class="name">Ms. Padma Uttam Uike</div>
+        <div class="name">Dr. Padma Uttam Uike</div>
         <div class="role">Vice President</div>
         <div class="inst">TISS, Mumbai &bull; 11+ Years in Development</div>
         <p class="bio">Expertise in Local Self-Governance, Community Forest Rights, Gender &amp; Livelihoods, Fundraising, and Agricultural Development.</p>
@@ -284,7 +290,7 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
     <div class="team-card">
       <img class="team-photo" src="images/img_16_Nisha_Kolhe.jpg" alt="Nisha Vijay Kolhe">
       <div class="team-info">
-        <div class="name">Ms. Nisha Vijay Kolhe</div>
+        <div class="name">Nisha Vijay Kolhe</div>
         <div class="role">Member</div>
         <div class="inst">Azim Premji University, Bangalore &bull; 8+ Years in Development</div>
         <p class="bio">Livelihood, Gender &amp; Nutrition, SRLMs (Rajasthan), Women&rsquo;s Institution Development, and Digital Literacy.</p>
@@ -293,7 +299,7 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
     <div class="team-card">
       <img class="team-photo" src="images/img_17_Shrikrushana_Mate.jpg" alt="Shrikrushana Gaurishankar Mate">
       <div class="team-info">
-        <div class="name">Mr. Shrikrushana Gaurishankar Mate</div>
+        <div class="name">Shrikrushana Gaurishankar Mate</div>
         <div class="role">Member</div>
         <div class="inst">Azim Premji University, Bangalore &bull; 8+ Years in Development</div>
         <p class="bio">Value Chains, Farmer Producer Organisations (FPOs), Social Entrepreneurship, Rural Livelihoods, and EDP Master Trainer.</p>
@@ -324,5 +330,26 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
 </footer>
 </footer>
 
+
+<script>
+(function(){
+  var btn = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if(!btn||!links) return;
+  btn.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.innerHTML = open ? '&times;' : '&#9776;';
+  });
+  var navLinkEls = links.querySelectorAll('a');
+  for(var i=0;i<navLinkEls.length;i++){
+    navLinkEls[i].addEventListener('click', function(){
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.innerHTML = '&#9776;';
+    });
+  }
+})();
+</script>
 </body>
 </html>

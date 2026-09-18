@@ -22,6 +22,7 @@ a{color:var(--g2);text-decoration:none}
 .nav-logo-box{background:#fff;border-radius:8px;padding:.4rem .6rem;display:flex;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .nav-logo-box img{height:34px;display:block;border-radius:3px}
 .nav-logo span{color:#fff;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;letter-spacing:.02em}
+.nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;padding:.4rem .2rem;line-height:1}
 
 /* ── IMAGE SLIDER ── */
 .slider{position:relative;width:100%;height:420px;overflow:hidden;background:var(--g1)}
@@ -188,7 +189,11 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
   .two-col,.three-col,.team-grid,.stats-bar{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--bd)}
   .hero h1{font-size:2rem}
-  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--g1);box-shadow:0 10px 20px rgba(0,0,0,.3)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.9rem 1.5rem;width:100%}
   .media-grid,.photo-grid.g2,.photo-grid.g3{grid-template-columns:1fr}
 }
 
@@ -235,7 +240,8 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
       <img src="images/img_00_AIMPOWER_Logo.jpg" alt="AIMPOWER Foundation logo">
     </a>
   </div>
-  <div class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="work.html">Our Work</a>
@@ -354,6 +360,10 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
       <img src="images/new_relief_distribution2.jpg" alt="Community receiving relief materials">
       <div class="gcap"><strong>Community Solidarity in Crisis</strong>45 marginalised families supported, Jun 2021</div>
     </div>
+    <div class="gallery-item">
+      <img src="images/img_09_COVID_Relief.jpg" alt="COVID ration kits being handed out">
+      <div class="gcap"><strong>Ration Kit Handover</strong>AIMPOWER FOUNDATION, Bhandara district, 2021</div>
+    </div>
   </div>
 
   <!-- EARLIER WORKSHOPS GALLERY -->
@@ -375,7 +385,18 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
       <img src="images/img_04_Workshop_session.jpg" alt="Facilitation session in progress">
       <div class="gcap"><strong>Facilitation Session in Progress</strong>State-level 2-day workshop, Tumsar &amp; Mumbai, 2021</div>
     </div>
-       
+    <div class="gallery-item">
+      <img src="images/img_10_Community_facilitator.jpg" alt="Community facilitator at work">
+      <div class="gcap"><strong>Community Facilitation</strong>Livelihood &amp; Forest Rights field work</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img_01_AIMPOWER_Foundation.jpg" alt="AIMPOWER Foundation team">
+      <div class="gcap"><strong>AIMPOWER FOUNDATION</strong>Team at community engagement</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/img_18_AIMPOWER_Foundation.jpg" alt="AIMPOWER Foundation field work">
+      <div class="gcap"><strong>Field Programme</strong>Vidarbha community work, 2021&ndash;22</div>
+    </div>
   </div>
 
   <!-- SOCIAL MEDIA & ONLINE PRESENCE -->
@@ -394,7 +415,18 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
         <a class="social-btn" href="https://youtube.com/@aimpowerfoundation3299" target="_blank">&#9654; YouTube Channel</a>
       </div>
     </div>
-    
+    <div class="card card-amber">
+      <div class="card-title">Media Enquiries &amp; Press Kit</div>
+      <p class="card-desc" style="margin-bottom:1rem">Journalists, researchers and documentary makers interested in AIMPOWER FOUNDATION&rsquo;s work in Vidarbha are welcome to contact us for:</p>
+      <ul class="blist">
+        <li>High-resolution event photographs</li>
+        <li>Founder interviews and expert commentary</li>
+        <li>Organisation fact sheets and annual summaries</li>
+        <li>Press releases for past and upcoming programmes</li>
+        <li>Partnership and CSR media collaboration</li>
+      </ul>
+      <a href="mailto:aimpowerf@gmail.com" style="display:inline-block;margin-top:1rem;background:var(--am);color:#fff;padding:.55rem 1.2rem;border-radius:8px;font-weight:600;font-size:.85rem">Email for Press Kit &rarr;</a>
+    </div>
   </div>
 </div>
 </section>
@@ -416,5 +448,26 @@ ul.blist li::before{content:"•";color:var(--g2);font-size:1.2rem;flex-shrink:0
 </footer>
 </footer>
 
+
+<script>
+(function(){
+  var btn = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if(!btn||!links) return;
+  btn.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.innerHTML = open ? '&times;' : '&#9776;';
+  });
+  var navLinkEls = links.querySelectorAll('a');
+  for(var i=0;i<navLinkEls.length;i++){
+    navLinkEls[i].addEventListener('click', function(){
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.innerHTML = '&#9776;';
+    });
+  }
+})();
+</script>
 </body>
 </html>
